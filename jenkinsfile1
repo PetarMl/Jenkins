@@ -15,7 +15,7 @@ pipeline{
         }
     }
     stage('Test') {
-        echo "Log level je ${LOG_LEVEL} i Release je ${RELEASE}"
+        echo "i Release je ${RELEASE}"
     }
 }
 }
