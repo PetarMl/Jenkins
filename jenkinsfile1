@@ -15,7 +15,9 @@ pipeline{
         }
     }
     stage('Test') {
+        steps{
         echo "i Release je ${RELEASE}"
     }
+}
 }
 }
