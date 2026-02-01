@@ -4,28 +4,27 @@ pipeline{
             RELEASE='20.4'
     }
     stages{
-
     stage('Build') {
-        agent any
         environment{
             LOG_LEVEL='INFO'
         }
         parallel{
             stage('windows-amd-64'){
+                agent any
                 steps{
                 echo"Release ${RELEASE} i log level je ${LOG_LEVEL}"
                 sh'sleep 10'
             }
             }
             stage('linux-arm-64'){
+                agent any
                 steps{
-
-                
                 echo"Release ${RELEASE} i log level je ${LOG_LEVEL}"
                 sh'sleep 20'
             }
             }
             stage('linux-amd-64'){
+                agent any
                 steps{
                 echo"Release ${RELEASE} i log level je ${LOG_LEVEL}"
                 sh'sleep 30'
