@@ -33,10 +33,11 @@ pipeline{
 
         }
     }
+    }
     post{
         always{
             echo"Ispisuje se ova poruke nebitno da li je uspeo pipeline ili ne!"
         }
     }
-}
+
 }
