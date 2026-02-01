@@ -10,9 +10,6 @@ pipeline{
         environment{
             LOG_LEVEL='INFO'
         }
-        steps {
-            echo "Release ${RELEASE} i log level je ${LOG_LEVEL}"
-        }
         parallel{
             stage('windows-amd-64'){
                 steps{
