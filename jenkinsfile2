@@ -1,0 +1,42 @@
+pipeline{
+    agent any
+    environment{
+            RELEASE='20.4'
+    }
+    stages{
+
+    stage('Build') {
+        agent any
+        environment{
+            LOG_LEVEL='INFO'
+        }
+        steps {
+            echo "Release ${RELEASE} i log level je ${LOG_LEVEL}"
+        }
+    }
+    stage('Test') {
+        steps{
+        echo "i Release je ${RELEASE}"
+    }
+}
+}
+    stage('Deploy'){
+        input{
+            message 'Da li zelis da deploy-ujes?'
+            ok 'Da , siguran sam'
+            abort 'Ne, ipak ne zelim!'
+            parameters{
+                string(name: 'TARGET_ENVIORMENT',defaultValue:'PROD', description:'Target deployment okruzenje')
+            }
+        }
+        steps{
+            echo "Deploy-ujem Release ${RELEASE} u produkcijsko okruzenje : ${TARGET_ENVIORMENT}"
+
+        }
+    }
+    post{
+        always{
+            echo"Ispisuje se ova poruke nebitno da li je uspeo pipeline ili ne!"
+        }
+    }
+}
