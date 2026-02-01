@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+    environment{
+            MY_ENV = "Static"
+    }
+    stages{
+        stage('Checkout') { 
+            checkout scm
+        }
+    
+    stage('Build') {
+        steps {
+            sh 'ls'
+        }
+    }
+    stage('Test') {
+        echo'Ovo je test step i $(MY_ENV)'
+    }
+}
+post{
+    success{
+        echo'Uspeo pipeline'
+    }
+    failure{
+        echo'Propao pipeline'
+    }
+}
+}
