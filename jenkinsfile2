@@ -24,7 +24,6 @@ pipeline{
         input{
             message 'Da li zelis da deploy-ujes?'
             ok 'Da , siguran sam'
-            abort 'Ne, ipak ne zelim!'
             parameters{
                 string(name: 'TARGET_ENVIORMENT',defaultValue:'PROD', description:'Target deployment okruzenje')
             }
