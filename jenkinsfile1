@@ -1,28 +1,21 @@
 pipeline{
     agent any
     environment{
-            MY_ENV = "Static"
+            RELEASE='20.4'
     }
     stages{
-        stage('Checkout') { 
-            checkout scm
-        }
-    
+
     stage('Build') {
+        agent any
+        environment{
+            LOG_LEVEL='INFO'
+        }
         steps {
-            sh 'ls'
+            echo "Release ${RELEASE} i log level je ${LOG_LEVEL}"
         }
     }
     stage('Test') {
-        echo'Ovo je test step i $(MY_ENV)'
-    }
-}
-post{
-    success{
-        echo'Uspeo pipeline'
-    }
-    failure{
-        echo'Propao pipeline'
+        echo "Log level je ${LOG_LEVEL} i Release je ${RELEASE}"
     }
 }
 }
