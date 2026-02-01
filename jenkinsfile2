@@ -19,7 +19,7 @@ pipeline{
         echo "i Release je ${RELEASE}"
     }
 }
-}
+
     stage('Deploy'){
         input{
             message 'Da li zelis da deploy-ujes?'
@@ -39,4 +39,5 @@ pipeline{
             echo"Ispisuje se ova poruke nebitno da li je uspeo pipeline ili ne!"
         }
     }
+}
 }
